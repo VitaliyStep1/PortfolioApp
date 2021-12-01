@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  SpeakEng
+
+  Created by Vitaliy Stepanenko on 29.11.2021.
+  
+*/
+
+"Done" = "Done";
+"Cancel" = "Cancel";
+"Topics" = "Topics";
+"Settings" = "Settings";
+"Send email" = "Send email";
+"Review" = "Review";
+"Interface language" = "Interface language";
+"Text language" = "Text language";
+"Translates language" = "Translates language";
+"Menu" = "Menu";
+"Random question" = "Random question";
+"Random topic" = "Random topic";
+"Error" = "Error";
+"Ok" = "Ok";
+"Sending email failed" = "Sending email failed";
+"Sending review failed" = "Sending review failed";
+"Topics" = "Topics";
+"Topic" = "Topic";
+"Question" = "Question";
+"Some error happened." = "Some error happened.";

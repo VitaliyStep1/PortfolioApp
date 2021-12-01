@@ -1,0 +1,6 @@
+framework module Pods_SpeakEng {
+  umbrella header "Pods-SpeakEng-umbrella.h"
+
+  export *
+  module * { export * }
+}

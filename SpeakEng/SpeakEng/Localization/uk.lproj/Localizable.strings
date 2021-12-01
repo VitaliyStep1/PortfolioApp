@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  SpeakEng
+
+  Created by Vitaliy Stepanenko on 29.11.2021.
+  
+*/
+
+"Done" = "Готово";
+"Cancel" = "Відмінити";
+"Topics" = "Теми";
+"Settings" = "Налаштування";
+"Send email" = "Відправити імейл";
+"Review" = "Відгук";
+"Interface language" = "Мова інтерфейсу";
+"Text language" = "Мова текстів";
+"Translates language" = "Мова перекладів";
+"Menu" = "Меню";
+"Random question" = "Випадкове питання";
+"Random topic" = "Випадкова тема";
+"Error" = "Помилка";
+"Ok" = "Ок";
+"Sending email failed" = "Відправка імейл-повідомлення не вдалася";
+"Sending review failed" = "Відправка відгуку не вдалася";
+"Topics" = "Теми";
+"Topic" = "Тема";
+"Question" = "Питання";
+"Some error happened." = "Сталася помилка.";
