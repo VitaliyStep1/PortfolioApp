@@ -9,7 +9,7 @@ import Foundation
 
 class TranslatesLanguageManager {
     let translatesLanguageUserDefaults = TranslatesLanguageUserDefaults()
-    private let defaultTranslatesLanguageId = 1
+    private let defaultTranslatesLanguageId = 2
     
     func saveActiveLanguageId(languageId: Int) {
         translatesLanguageUserDefaults.saveActiveLanguageId(languageId: languageId)
