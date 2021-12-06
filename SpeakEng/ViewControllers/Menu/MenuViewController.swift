@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
         viewModel.viewWillAppeared()
     }
     
-    func bind() {
+    private func bind() {
         viewModel.reloadItemsTableViewSubject.sink { [weak self] in
             self?.itemsTableView.reloadData()
         }.store(in: &subscriptions)

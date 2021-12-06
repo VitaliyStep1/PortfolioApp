@@ -20,6 +20,7 @@ class TopicsViewController: BaseViewController {
         super.viewDidLoad()
         setup()
         bind()
+        viewModel.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,7 +28,7 @@ class TopicsViewController: BaseViewController {
         viewModel.viewWillAppeared()
     }
     
-    func bind() {
+    private func bind() {
         viewModel.$isShowLoadingIndicator.sink { [weak self] isShow in
             if isShow {
                 self?.showLoadingIndicator()
@@ -42,7 +43,7 @@ class TopicsViewController: BaseViewController {
         }.store(in: &subscriptions)
     }
     
-    func setup() {
+    private func setup() {
         titleLabel?.text = "Topics".localized()
     }
     

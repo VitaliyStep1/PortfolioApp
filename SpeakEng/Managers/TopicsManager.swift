@@ -11,16 +11,17 @@ import Combine
 
 class TopicsManager {
     static let shared = TopicsManager()
-    let textLanguageManager = TextLanguageManager()
-    let updateTopicsUserDefaults = UpdateTopicsUserDefaults()
+    lazy var textLanguageManager = TextLanguageManager()
+    lazy var updateTopicsUserDefaults = UpdateTopicsUserDefaults()
+    lazy var topicsCoreDataManager = TopicsCoreDataManager.shared
     
-    @Published  private(set) var isLoading = false
+    var loadingTopicsForLanguagesIdSetSubject = CurrentValueSubject<Set<Int>, Never>([])
     
     fileprivate init() {}
     
-    func updateTopicsIfNecessary() {
+    func updateTopicsFromServerIfNecessary() {
         if isNecessaryUpdateToUpdateQuestionsForActiveLanguage() {
-            updateTopics()
+            updateTopicsFromServer()
         }
     }
     
@@ -38,22 +39,27 @@ class TopicsManager {
         return false
     }
     
-    func updateTopics() {
+    func updateTopicsFromServer() {
         let languageId = textLanguageManager.getActiveLanguageId()
-        isLoading = true
-        firstly {
-            DataService.getTopics(languageId: languageId)
-        }.done { [weak self] topicsResponses in
-            if let self = self {
-                if self.saveTopicsToLocalDB(topics: topicsResponses) {
-                    self.saveUpdatedDate(languageId: languageId)
+        if !loadingTopicsForLanguagesIdSetSubject.value.contains(languageId) {
+            loadingTopicsForLanguagesIdSetSubject.value.insert(languageId)
+            firstly {
+                DataService.getTopics(languageId: languageId)
+            }.done { [weak self] topicsResponses in
+                if let self = self {
+                    let topics = topicsResponses.map { topicsResponse in
+                        Topic(topicId: topicsResponse.id, title: topicsResponse.title, sort: topicsResponse.sort, languageId: topicsResponse.languageId)
+                    }
+                    if self.saveTopicsToLocalDB(topics: topics) {
+                        self.saveUpdatedDate(languageId: languageId)
+                    }
                 }
+            }.ensure { [weak self] in
+                self?.loadingTopicsForLanguagesIdSetSubject.value.remove(languageId)
+            }.catch { error in
+                //TODO: Do anything else?
+                print(error.localizedDescription)
             }
-        }.ensure { [weak self] in
-            self?.isLoading = false
-        }.catch { error in
-            //TODO: Do anything else?
-            print(error.localizedDescription)
         }
     }
     
@@ -62,7 +68,20 @@ class TopicsManager {
         updateTopicsUserDefaults.saveUpdatedTopicsDate(date: date, languageId: languageId)
     }
     
-    func saveTopicsToLocalDB(topics: [TopicsResponse]) -> Bool {
-        return false
+    func saveTopicsToLocalDB(topics: [Topic]) -> Bool {
+        let isSuccess = topicsCoreDataManager.addTopics(topics: topics)
+        return isSuccess
+    }
+    
+    func takeTopics() -> [Topic] {
+        let languageId = textLanguageManager.getActiveLanguageId()
+        let topics = topicsCoreDataManager.takeAllTopics(languageId: languageId)
+        return topics ?? []
+    }
+    
+    func takeTopic(topicId: Int) -> Topic? {
+        let languageId = textLanguageManager.getActiveLanguageId()
+        let topic = topicsCoreDataManager.takeTopic(languageId: languageId, topicId: topicId)
+        return topic
     }
 }

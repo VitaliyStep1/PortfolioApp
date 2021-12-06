@@ -21,26 +21,34 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-pY-SSm">
-                                        <rect key="frame" x="312.66666666666669" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="307.66666666666669" y="2.6666666666666643" width="60" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="tBv-pY-SSm" secondAttribute="height" id="R1Y-Lg-DyK"/>
+                                            <constraint firstAttribute="width" secondItem="tBv-pY-SSm" secondAttribute="height" multiplier="4:3" id="tMW-qs-zg7"/>
                                         </constraints>
-                                        <state key="normal" title="Menu">
+                                        <state key="normal" backgroundImage="Shared_menuButton">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="menuButtonClick" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5xK-sg-wPr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-8H-bIJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-8H-bIJ" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
                                         <rect key="frame" x="66.666666666666686" y="0.0" width="242" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                <integer key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltx-vc-EZs">
-                                        <rect key="frame" x="17.666666666666671" y="5" width="40" height="40"/>
-                                        <state key="normal" title="Back">
+                                        <rect key="frame" x="7.6666666666666643" y="2.6666666666666643" width="59.999999999999993" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ltx-vc-EZs" secondAttribute="height" multiplier="4:3" id="6GJ-qb-gj5"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="Shared_backButton">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -53,14 +61,14 @@
                                     <constraint firstItem="tBv-pY-SSm" firstAttribute="centerX" secondItem="NXg-LQ-sYW" secondAttribute="centerX" multiplier="1.8" id="2wO-5a-Sx7"/>
                                     <constraint firstItem="6Et-8H-bIJ" firstAttribute="centerX" secondItem="NXg-LQ-sYW" secondAttribute="centerX" id="3i9-eP-z8T"/>
                                     <constraint firstItem="Ltx-vc-EZs" firstAttribute="centerY" secondItem="NXg-LQ-sYW" secondAttribute="centerY" id="7I4-lK-DAw"/>
-                                    <constraint firstItem="tBv-pY-SSm" firstAttribute="top" secondItem="NXg-LQ-sYW" secondAttribute="top" id="8Wc-bp-p7z"/>
                                     <constraint firstItem="Ltx-vc-EZs" firstAttribute="centerX" secondItem="NXg-LQ-sYW" secondAttribute="centerX" multiplier="0.2" id="MJv-4C-F60"/>
                                     <constraint firstItem="6Et-8H-bIJ" firstAttribute="width" secondItem="NXg-LQ-sYW" secondAttribute="width" multiplier="0.645333" id="ZdP-6w-V2S"/>
-                                    <constraint firstAttribute="bottom" secondItem="tBv-pY-SSm" secondAttribute="bottom" id="anm-Qi-GZe"/>
+                                    <constraint firstItem="tBv-pY-SSm" firstAttribute="width" secondItem="NXg-LQ-sYW" secondAttribute="width" multiplier="0.16" id="cn8-f4-Gke"/>
                                     <constraint firstAttribute="bottom" secondItem="6Et-8H-bIJ" secondAttribute="bottom" id="eNG-Ub-LOq"/>
+                                    <constraint firstItem="Ltx-vc-EZs" firstAttribute="width" secondItem="NXg-LQ-sYW" secondAttribute="width" multiplier="0.16" id="jdm-EB-RFU"/>
                                     <constraint firstAttribute="width" secondItem="NXg-LQ-sYW" secondAttribute="height" multiplier="375:50" id="mL8-rt-c9x"/>
                                     <constraint firstItem="6Et-8H-bIJ" firstAttribute="top" secondItem="NXg-LQ-sYW" secondAttribute="top" id="qQe-eZ-KEi"/>
-                                    <constraint firstItem="Ltx-vc-EZs" firstAttribute="width" secondItem="Ltx-vc-EZs" secondAttribute="height" id="skd-CB-FmO"/>
+                                    <constraint firstItem="tBv-pY-SSm" firstAttribute="centerY" secondItem="NXg-LQ-sYW" secondAttribute="centerY" id="sTd-54-F3j"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NR-xH-vAe">
@@ -74,22 +82,147 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="USx-xI-P2Z">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopicQuestionCellIdentifier" rowHeight="50" id="USx-xI-P2Z" customClass="TopicQuestionTableViewCell" customModule="SpeakEng" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="USx-xI-P2Z" id="MMa-uG-fQh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUu-2Q-deF" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="0.0" width="301" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRj-HM-QHE">
+                                                    <rect key="frame" x="325" y="5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="gRj-HM-QHE" secondAttribute="height" id="2PK-Xg-8bN"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="gUu-2Q-deF" firstAttribute="centerX" secondItem="MMa-uG-fQh" secondAttribute="centerX" multiplier="0.888" id="HUf-80-D7E"/>
+                                                <constraint firstItem="gUu-2Q-deF" firstAttribute="top" secondItem="MMa-uG-fQh" secondAttribute="top" id="Htg-Lx-epE"/>
+                                                <constraint firstItem="gRj-HM-QHE" firstAttribute="width" secondItem="MMa-uG-fQh" secondAttribute="width" multiplier="0.106667" id="WDo-tY-Aw2"/>
+                                                <constraint firstAttribute="bottom" secondItem="gUu-2Q-deF" secondAttribute="bottom" id="dpQ-LO-Xcp"/>
+                                                <constraint firstItem="gRj-HM-QHE" firstAttribute="centerY" secondItem="MMa-uG-fQh" secondAttribute="centerY" id="eef-Z4-prF"/>
+                                                <constraint firstItem="gRj-HM-QHE" firstAttribute="centerX" secondItem="MMa-uG-fQh" secondAttribute="centerX" multiplier="1.84" id="hDa-3b-fDj"/>
+                                                <constraint firstItem="gUu-2Q-deF" firstAttribute="width" secondItem="MMa-uG-fQh" secondAttribute="width" multiplier="0.802667" id="whP-vb-ai2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="selectedImageView" destination="gRj-HM-QHE" id="0jl-5N-VQ1"/>
+                                            <outlet property="titleLabel" destination="gUu-2Q-deF" id="CUY-rL-rDo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="EDt-je-jGf"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="67X-4G-uxj"/>
+                                </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU9-8x-eK8" customClass="TranslationView" customModule="SpeakEng" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU9-8x-eK8" customClass="TopicTranslationView" customModule="SpeakEng" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="618" width="375" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzG-DT-Sct">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHQ-DM-vU8" customClass="ScalableButton" customModule="SpeakEng" customModuleProvider="target">
+                                                <rect key="frame" x="5" y="25" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="zHQ-DM-vU8" secondAttribute="height" multiplier="1:1" id="BEt-9i-Vbo"/>
+                                                </constraints>
+                                                <state key="normal" title="Lang"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="languageTranslationViewButtonClick" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GXr-6w-JLD"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qw4-go-9WA" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
+                                                <rect key="frame" x="60" y="0.0" width="255" height="100"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                        <integer key="value" value="17"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0s-d0-Hbz">
+                                                <rect key="frame" x="320" y="25" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="F0s-d0-Hbz" secondAttribute="height" multiplier="1:1" id="rr5-qt-cqz"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="Shared_closeTranslationButton"/>
+                                                <connections>
+                                                    <action selector="hideTranslationViewButtonClick" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yka-PL-L7V"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Qw4-go-9WA" secondAttribute="bottom" id="4Ow-Y9-nr9"/>
+                                            <constraint firstItem="Qw4-go-9WA" firstAttribute="centerX" secondItem="bzG-DT-Sct" secondAttribute="centerX" id="Dtk-db-e6W"/>
+                                            <constraint firstItem="zHQ-DM-vU8" firstAttribute="centerX" secondItem="bzG-DT-Sct" secondAttribute="centerX" multiplier="0.16" id="IL3-qY-L8f"/>
+                                            <constraint firstItem="F0s-d0-Hbz" firstAttribute="width" secondItem="bzG-DT-Sct" secondAttribute="width" multiplier="0.133333" id="MVS-nF-yzS"/>
+                                            <constraint firstItem="F0s-d0-Hbz" firstAttribute="centerY" secondItem="bzG-DT-Sct" secondAttribute="centerY" id="QdM-mY-Yf8"/>
+                                            <constraint firstItem="zHQ-DM-vU8" firstAttribute="centerY" secondItem="bzG-DT-Sct" secondAttribute="centerY" id="RhU-im-0lW"/>
+                                            <constraint firstItem="Qw4-go-9WA" firstAttribute="top" secondItem="bzG-DT-Sct" secondAttribute="top" id="Vjn-Ra-xL2"/>
+                                            <constraint firstItem="F0s-d0-Hbz" firstAttribute="centerX" secondItem="bzG-DT-Sct" secondAttribute="centerX" multiplier="1.84" id="cpK-bD-vyV"/>
+                                            <constraint firstItem="zHQ-DM-vU8" firstAttribute="width" secondItem="bzG-DT-Sct" secondAttribute="width" multiplier="0.133333" id="jF2-P2-vmg"/>
+                                            <constraint firstItem="Qw4-go-9WA" firstAttribute="width" secondItem="bzG-DT-Sct" secondAttribute="width" multiplier="0.68" id="vOp-4O-22M"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-cg-3CW" customClass="ScalableButton" customModule="SpeakEng" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Show translation">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showTranslationViewButtonClick" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gT5-yY-lN6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bzG-DT-Sct" secondAttribute="trailing" id="3VS-Ya-sus"/>
                                     <constraint firstAttribute="width" secondItem="UU9-8x-eK8" secondAttribute="height" multiplier="375:100" id="I2O-BE-N5s"/>
+                                    <constraint firstAttribute="bottom" secondItem="bzG-DT-Sct" secondAttribute="bottom" id="V5Q-Kt-fWD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cfj-cg-3CW" secondAttribute="trailing" id="cpY-CW-NvM"/>
+                                    <constraint firstItem="bzG-DT-Sct" firstAttribute="top" secondItem="UU9-8x-eK8" secondAttribute="top" id="eaR-kH-rBU"/>
+                                    <constraint firstItem="Cfj-cg-3CW" firstAttribute="top" secondItem="UU9-8x-eK8" secondAttribute="top" id="g1W-h3-551"/>
+                                    <constraint firstItem="Cfj-cg-3CW" firstAttribute="leading" secondItem="UU9-8x-eK8" secondAttribute="leading" id="hK5-jH-b8W"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cfj-cg-3CW" secondAttribute="bottom" id="lMc-pe-xji"/>
+                                    <constraint firstItem="bzG-DT-Sct" firstAttribute="leading" secondItem="UU9-8x-eK8" secondAttribute="leading" id="ryP-2x-yqe"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="hideButton" destination="F0s-d0-Hbz" id="qRZ-q7-WlN"/>
+                                    <outlet property="languageButton" destination="zHQ-DM-vU8" id="lEb-AX-Z8K"/>
+                                    <outlet property="showTranslationButton" destination="Cfj-cg-3CW" id="nfu-hM-dnR"/>
+                                    <outlet property="translatedLabel" destination="Qw4-go-9WA" id="u4u-Gu-8fs"/>
+                                    <outlet property="translatedView" destination="bzG-DT-Sct" id="jf3-g7-TIF"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -112,20 +245,28 @@
                     </view>
                     <connections>
                         <outlet property="menuButton" destination="tBv-pY-SSm" id="8TI-EY-wHe"/>
+                        <outlet property="questionsTableView" destination="Rgr-7D-GIS" id="Mfc-hI-Dgh"/>
                         <outlet property="titleLabel" destination="6Et-8H-bIJ" id="Lan-pL-B84"/>
+                        <outlet property="translationView" destination="UU9-8x-eK8" id="GLa-jG-mxn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="65"/>
+            <point key="canvasLocation" x="29.600000000000001" y="64.285714285714292"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Shared_backButton" width="60" height="45"/>
+        <image name="Shared_closeTranslationButton" width="50" height="50"/>
+        <image name="Shared_menuButton" width="60" height="45"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

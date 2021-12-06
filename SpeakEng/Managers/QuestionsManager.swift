@@ -13,9 +13,13 @@ class QuestionsManager {
     
     fileprivate init() {}
     
-    let updateQuestionsUserDefaults = UpdateQuestionsUserDefaults()
-    let textLanguageManager = TextLanguageManager()
-    let translatesLanguageManager = TranslatesLanguageManager()
+    lazy var updateQuestionsUserDefaults = UpdateQuestionsUserDefaults()
+    lazy var textLanguageManager = TextLanguageManager()
+    lazy var translatesLanguageManager = TranslatesLanguageManager()
+    lazy var questionsCoreDataManager = QuestionsCoreDataManager.shared
+    lazy var topicsManager = TopicsManager.shared
+    
+    var loadingQuestionsForLanguagesIdSet = Set<Int>()
     
     func updateQuestionsFromServerIfNecessary() {
         if isNecessaryToUpdateQuestionsForActiveTextLanguage() || isNecessaryToUpdateQuestionsForActiveTranslatesLanguage() {
@@ -47,24 +51,31 @@ class QuestionsManager {
     func updateQuestionsFromServer() {
         let textLanguageId = textLanguageManager.getActiveLanguageId()
         let translatesLanguageId = translatesLanguageManager.getActiveLanguageId()
+        if !loadingQuestionsForLanguagesIdSet.contains(textLanguageId) || !loadingQuestionsForLanguagesIdSet.contains(translatesLanguageId) {
+            loadingQuestionsForLanguagesIdSet.insert(textLanguageId)
+            loadingQuestionsForLanguagesIdSet.insert(translatesLanguageId)
         firstly {
             DataService.getQuestions(mainLanguageId: textLanguageId, translationLanguageId: translatesLanguageId)
         }.done { [weak self] questionsResponse in
             if let self = self {
                 let questions1 = questionsResponse.questions1
-                let isSuccess1 = self.saveQuestionsToLocalDB(questions: questions1)
+                let isSuccess1 = self.saveQuestionsToLocalDB(responseQuestions: questions1)
                 if isSuccess1 {
                     self.saveUpdatedDate(languageId: textLanguageId)
                 }
                 let questions2 = questionsResponse.questions2
-                let isSuccess2 = self.saveQuestionsToLocalDB(questions: questions2)
+                let isSuccess2 = self.saveQuestionsToLocalDB(responseQuestions: questions2)
                 if isSuccess2 {
                     self.saveUpdatedDate(languageId: translatesLanguageId)
                 }
             }
-        }.catch { error in
+        }.ensure { [weak self] in
+            self?.loadingQuestionsForLanguagesIdSet.remove(textLanguageId)
+            self?.loadingQuestionsForLanguagesIdSet.remove(translatesLanguageId)
+        } .catch { error in
             //TODO: Do anything else?
             print(error.localizedDescription)
+        }
         }
     }
     
@@ -73,7 +84,47 @@ class QuestionsManager {
         updateQuestionsUserDefaults.saveUpdatedQuestionsDate(date: date, languageId: languageId)
     }
     
-    private func saveQuestionsToLocalDB(questions: [QuestionsResponse.Question]) -> Bool {
-        return false
+    private func saveQuestionsToLocalDB(responseQuestions: [QuestionsResponse.Question]) -> Bool {
+        let questions = responseQuestions.compactMap { responseQuestion -> Question? in
+            guard let questionId = responseQuestion.id,
+                  let sort = responseQuestion.sort,
+                  let topicId = responseQuestion.topicId,
+                  let languageId = responseQuestion.languageId else {
+                return nil
+            }
+            let question = Question(questionId: questionId, title: responseQuestion.title, sort: sort, topicId: topicId, languageId: languageId)
+            return question
+        }
+        let isSuccess = questionsCoreDataManager.addQuestions(questions: questions)
+        
+        return isSuccess
+    }
+    
+    func takeRandomQuestionAndTranslationAndTopic() -> (question: Question?, translatedQuestion: Question?, topic: Topic?) {
+        let textLanguageId = textLanguageManager.getActiveLanguageId()
+        let question = questionsCoreDataManager.takeRandomQuestion(languageId: textLanguageId)
+        var translatedQuestion: Question? = nil
+        if let questionId = question?.questionId {
+            let translatesLanguageId = translatesLanguageManager.getActiveLanguageId()
+            translatedQuestion = questionsCoreDataManager.takeQuestion(questionId: questionId, languageId: translatesLanguageId)
+        }
+        var topic: Topic? = nil
+        if let topicId = question?.topicId {
+            topic = topicsManager.takeTopic(topicId: topicId)
+        }
+        
+        return (question: question, translatedQuestion: translatedQuestion, topic: topic)
+    }
+    
+    func takeQuestions(topicId: Int) -> [Question]? {
+        let textLanguageId = textLanguageManager.getActiveLanguageId()
+        let questions = questionsCoreDataManager.takeQuestions(languageId: textLanguageId, topicId: topicId)
+        return questions
+    }
+    
+    func takeTranlatedQuestion(questionId: Int) -> Question? {
+        let languageId = translatesLanguageManager.getActiveLanguageId()
+        let question = questionsCoreDataManager.takeQuestion(questionId: questionId, languageId: languageId)
+        return question
     }
 }

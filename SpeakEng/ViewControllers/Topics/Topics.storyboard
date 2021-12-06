@@ -21,32 +21,37 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8H-UH-V5d">
-                                        <rect key="frame" x="12.666666666666664" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="7.6666666666666643" y="2.6666666666666643" width="59.999999999999993" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Y8H-UH-V5d" secondAttribute="height" id="43e-Dt-nzJ"/>
+                                            <constraint firstAttribute="width" secondItem="Y8H-UH-V5d" secondAttribute="height" multiplier="4:3" id="Emb-dh-3af"/>
                                         </constraints>
-                                        <state key="normal" title="Menu">
+                                        <state key="normal" backgroundImage="Shared_menuButton">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="menuButtonClick" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4pg-nQ-GI3"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-qU-ngb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-qU-ngb" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
                                         <rect key="frame" x="66.666666666666686" y="0.0" width="242" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                <integer key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ifw-8L-z9T" secondAttribute="height" multiplier="375:50" id="2Y3-vv-qPF"/>
                                     <constraint firstAttribute="bottom" secondItem="dwa-qU-ngb" secondAttribute="bottom" id="7AZ-vx-4vu"/>
-                                    <constraint firstAttribute="bottom" secondItem="Y8H-UH-V5d" secondAttribute="bottom" id="FVm-mU-ygq"/>
                                     <constraint firstItem="dwa-qU-ngb" firstAttribute="centerX" secondItem="Ifw-8L-z9T" secondAttribute="centerX" id="FZg-ZQ-2SE"/>
                                     <constraint firstItem="Y8H-UH-V5d" firstAttribute="centerX" secondItem="Ifw-8L-z9T" secondAttribute="centerX" multiplier="0.2" id="IMP-dg-j0X"/>
-                                    <constraint firstItem="Y8H-UH-V5d" firstAttribute="top" secondItem="Ifw-8L-z9T" secondAttribute="top" id="kFa-dq-d5r"/>
+                                    <constraint firstItem="Y8H-UH-V5d" firstAttribute="width" secondItem="Ifw-8L-z9T" secondAttribute="width" multiplier="0.16" id="URH-B9-uCC"/>
+                                    <constraint firstItem="Y8H-UH-V5d" firstAttribute="centerY" secondItem="Ifw-8L-z9T" secondAttribute="centerY" id="iC9-Qn-xUi"/>
                                     <constraint firstItem="dwa-qU-ngb" firstAttribute="top" secondItem="Ifw-8L-z9T" secondAttribute="top" id="sFj-Rc-txu"/>
                                     <constraint firstItem="dwa-qU-ngb" firstAttribute="width" secondItem="Ifw-8L-z9T" secondAttribute="width" multiplier="0.645333" id="z4v-af-OBN"/>
                                 </constraints>
@@ -75,11 +80,16 @@
                                                         <constraint firstAttribute="width" secondItem="k45-zl-m3n" secondAttribute="height" id="lBn-tU-Uma"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGC-7z-xST">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGC-7z-xST" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
                                                     <rect key="frame" x="88" y="0.0" width="274" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,11 +122,16 @@
                                                         <constraint firstAttribute="width" secondItem="e6P-hN-Wwq" secondAttribute="height" id="2ea-3P-eQy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-cM-YyS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liw-cM-YyS" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
                                                     <rect key="frame" x="88" y="0.0" width="274" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,11 +164,16 @@
                                                         <constraint firstAttribute="width" secondItem="kNu-pX-WV2" secondAttribute="height" id="54r-qs-Ccp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVc-Yl-bsR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVc-Yl-bsR" customClass="ScalableLabel" customModule="SpeakEng" customModuleProvider="target">
                                                     <rect key="frame" x="88" y="0.0" width="274" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="scalableFontSize">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -216,6 +236,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Shared_menuButton" width="60" height="45"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

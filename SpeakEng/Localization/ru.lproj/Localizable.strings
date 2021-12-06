@@ -8,3 +8,22 @@
 
 "Done" = "Готово";
 "Cancel" = "Отменить";
+"Topics" = "Темы";
+"Settings" = "Настройки";
+"Send email" = "Отправить имейл";
+"Review" = "Отзыв";
+"Interface language" = "Язык интерфейса";
+"Text language" = "Язык текстов";
+"Translates language" = "Язык переводов";
+"Menu" = "Меню";
+"Random question" = "Случайный вопрос";
+"Random topic" = "Случайная тема";
+"Error" = "Ошибка";
+"Ok" = "Ок";
+"Sending email failed" = "Отправка имейл-сообщения не удалась";
+"Sending review failed" = "Отправка отзыва не удалась";
+"Topic" = "Тема";
+"Question" = "Вопрос";
+"Some error happened." = "Произошла ошибка.";
+"Next question" = "Следующий вопрос";
+"Show translation" = "Показать перевод";

@@ -31,6 +31,9 @@ class AppCoordinator {
         let topicsVC = takeViewController(.topics)
         let contentViewController = MainNavigationController(rootViewController: topicsVC)
         let menuViewController = takeViewController(.menu)
+        let baseMenuWidth: CGFloat = 352
+        let menuWidth = baseMenuWidth * Scalable.scale
+        SideMenuController.preferences.basic.menuWidth = menuWidth
         sideMenuController = SideMenuController(contentViewController: contentViewController, menuViewController: menuViewController)
     }
     

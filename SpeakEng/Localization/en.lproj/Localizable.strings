@@ -22,7 +22,8 @@
 "Ok" = "Ok";
 "Sending email failed" = "Sending email failed";
 "Sending review failed" = "Sending review failed";
-"Topics" = "Topics";
 "Topic" = "Topic";
 "Question" = "Question";
 "Some error happened." = "Some error happened.";
+"Next question" = "Next question";
+"Show translation" = "Show translation";

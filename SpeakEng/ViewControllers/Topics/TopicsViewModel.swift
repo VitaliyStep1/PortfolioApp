@@ -16,15 +16,32 @@ class TopicsViewModel {
         .randomTopic,
         .topic
     ]
+    private var subscriptions = Set<AnyCancellable>()
     var topicsSubject = CurrentValueSubject<[TopicsModel.Topic], Never>([])
     
     @Published private(set) var isShowLoadingIndicator = false
     
     let questionsManager = QuestionsManager.shared
-    let textLanguageManager = TextLanguageManager()
+    lazy var textLanguageManager = TextLanguageManager()
+    lazy var topicsManager = TopicsManager.shared
     
     init(router: TopicsRouter) {
         self.router = router
+    }
+    
+    func viewDidLoaded() {
+        bind()
+    }
+    
+    private func bind() {
+        topicsManager.loadingTopicsForLanguagesIdSetSubject.sink { [weak self] languagesIdSet in
+            guard let self = self else {
+                return
+            }
+            let languageId = self.textLanguageManager.getActiveLanguageId()
+            self.isShowLoadingIndicator = languagesIdSet.contains(languageId)
+            self.takeTopicsFromDB()
+        }.store(in: &subscriptions)
     }
     
     func menuButtonClicked() {
@@ -32,29 +49,17 @@ class TopicsViewModel {
     }
     
     func viewWillAppeared() {
-        loadTopicsFromServer()
+        takeTopicsFromDB()
+        topicsManager.updateTopicsFromServerIfNecessary()
         questionsManager.updateQuestionsFromServerIfNecessary()
     }
     
-    func loadTopicsFromServer() {
-        let textLanguageId = textLanguageManager.getActiveLanguageId()
-        isShowLoadingIndicator = true
-        firstly {
-            DataService.getTopics(languageId: textLanguageId)
-        }.done { [weak self] topicsResponses in
-            let sortedTopicsResponses = topicsResponses.sorted {
-                $0.sort < $1.sort
-            }
-            let topics = sortedTopicsResponses.map({ topicsResponse in
-                TopicsModel.Topic(id: topicsResponse.id, title: topicsResponse.title)
-            })
-            self?.topicsSubject.send(topics)
-        }.ensure { [weak self] in
-            self?.isShowLoadingIndicator = false
-        }.catch { [weak self] error in
-            let errorMessage = "Some error happened.".localized() + " " + error.localizedDescription
-            self?.router.showErrorAlert(message: errorMessage)
+    func takeTopicsFromDB() {
+        let topics = topicsManager.takeTopics()
+        let topics1 = topics.map { topic in
+            TopicsModel.Topic(id: topic.topicId, title: topic.title)
         }
+        topicsSubject.send(topics1)
     }
 }
 

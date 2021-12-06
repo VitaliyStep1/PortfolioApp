@@ -10,8 +10,16 @@ import Foundation
 class TextLanguageManager {
     let textLanguageUserDefaults = TextLanguageUserDefaults()
     private let defaultTextLanguageId = 1
+    lazy var topicsManager = TopicsManager.shared
+    lazy var questionsManager = QuestionsManager.shared
     
-    func saveActiveLanguageId(languageId: Int) {
+    func changeActiveLanguageId(languageId: Int) {
+        saveActiveLanguageId(languageId: languageId)
+        topicsManager.updateTopicsFromServer()
+        questionsManager.updateQuestionsFromServer()
+    }
+    
+    private func saveActiveLanguageId(languageId: Int) {
         textLanguageUserDefaults.saveActiveLanguageId(languageId: languageId)
     }
     

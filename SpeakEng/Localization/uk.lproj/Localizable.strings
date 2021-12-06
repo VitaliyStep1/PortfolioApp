@@ -22,7 +22,8 @@
 "Ok" = "Ок";
 "Sending email failed" = "Відправка імейл-повідомлення не вдалася";
 "Sending review failed" = "Відправка відгуку не вдалася";
-"Topics" = "Теми";
 "Topic" = "Тема";
 "Question" = "Питання";
 "Some error happened." = "Сталася помилка.";
+"Next question" = "Наступне питання";
+"Show translation" = "Показати переклад";

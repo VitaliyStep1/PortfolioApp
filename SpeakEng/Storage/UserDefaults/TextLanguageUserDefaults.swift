@@ -15,7 +15,7 @@ class TextLanguageUserDefaults {
     }
     
     func getActiveLanguageId() -> Int? {
-        let languageId = UserDefaults.standard.integer(forKey: activeLanguageIdKey)
+        let languageId = UserDefaults.standard.value(forKey: activeLanguageIdKey) as? Int
         return languageId
     }
 }

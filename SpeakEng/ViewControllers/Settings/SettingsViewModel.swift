@@ -16,6 +16,7 @@ class SettingsViewModel {
     var showTextLanguagePickerViewSubject = PassthroughSubject<(languages: [SettingsModel.TextLanguage], activeLanguageIndex: Int),Never>()
     var showTranslatesLanguagePickerViewSubject = PassthroughSubject<(languages: [SettingsModel.TextLanguage], activeLanguageIndex: Int),Never>()
     var reloadSettingsTableViewSubject = PassthroughSubject<Void,Never>()
+    var interfaceLanguageChangedSubject = PassthroughSubject<Void,Never>()
     @Published private(set) var isShowLoadingIndicator = false
     
     let settingsItems: [SettingsModel.SettingsItem] = [
@@ -151,10 +152,11 @@ extension SettingsViewModel {
     func interfaceLanguageWasSelected(language: SettingsModel.InterfaceLanguage) {
         interfaceLanguageManager.saveActiveLanguage(language: language.language)
         reloadSettingsTableViewSubject.send()
+        interfaceLanguageChangedSubject.send()
     }
     
     func textLanguageWasSelected(language: SettingsModel.TextLanguage) {
-        textLanguageManager.saveActiveLanguageId(languageId: language.id)
+        textLanguageManager.changeActiveLanguageId(languageId: language.id)
         reloadSettingsTableViewSubject.send()
     }
     

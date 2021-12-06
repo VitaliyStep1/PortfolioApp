@@ -27,13 +27,17 @@ class SettingsViewController: BaseViewController {
         viewModel.menuButtonClicked()
     }
     
-    func setup() {
+    private func setup() {
         toolBarPickerView.hide()
         loadingView.hideLoading()
+        updateTitles()
+    }
+    
+    private func updateTitles() {
         titleLabel.text = "Settings".localized()
     }
     
-    func bind() {
+    private func bind() {
         viewModel.showInterfaceLanguagePickerViewSubject.sink { [weak self] interfaceLanguagesInfo in
             let interfaceLanguages = interfaceLanguagesInfo.languages
             let activeLanguageIndex = interfaceLanguagesInfo.activeLanguageIndex
@@ -63,6 +67,10 @@ class SettingsViewController: BaseViewController {
             else {
                 self?.hideLoadingIndicator()
             }
+        }.store(in: &subscriptions)
+        
+        viewModel.interfaceLanguageChangedSubject.sink { [weak self] in
+            self?.updateTitles()
         }.store(in: &subscriptions)
     }
     
